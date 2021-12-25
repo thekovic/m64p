@@ -85,7 +85,7 @@ enum DepthBlendFlagBits
 	DEPTH_BLEND_COLOR_ON_COVERAGE_BIT = 1 << 5,
 	DEPTH_BLEND_MULTI_CYCLE_BIT = 1 << 6,
 	DEPTH_BLEND_AA_BIT = 1 << 7,
-	DEPTH_BLEND_DITHER_ENABLE_BIT = 1 << 8
+	DEPTH_BLEND_DITHER_ENABLE_BIT = 0 << 8
 };
 using DepthBlendFlags = uint32_t;
 
