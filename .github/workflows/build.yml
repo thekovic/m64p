@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - dither-disable
+      - dither-disable2
     paths-ignore:
       - 'snap/**'
   pull_request:
