@@ -1199,6 +1199,8 @@ Vulkan::ImageHandle VideoInterface::scanout(VkImageLayout target_layout, const S
 		regs.status &= ~VI_CONTROL_DIVOT_ENABLE_BIT;
 	if (!options.vi.dither_filter)
 		regs.status &= ~VI_CONTROL_DITHER_FILTER_ENABLE_BIT;
+	if (!options.vi.screen_dither)
+		regs.status &= ~VI_CONTROL_SCREEN_DITHER_ENABLE_BIT;
 
 	bool is_blank = (regs.status & VI_CONTROL_TYPE_RGBA5551_BIT) == 0;
 	if (is_blank && previous_frame_blank)
