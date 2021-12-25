@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - dither-disable
     paths-ignore:
       - 'snap/**'
   pull_request:
