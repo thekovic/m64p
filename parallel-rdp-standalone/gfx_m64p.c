@@ -35,7 +35,8 @@
 #define KEY_GAMMADITHER "GammaDither"
 #define KEY_AA "VIAA"
 #define KEY_VIBILERP "VIBilerp"
-#define KEY_VIDITHER "VIDither"
+#define KEY_VIDEDITHER "VIDedither"
+#define KEY_VISCREENDITHER "VIScreenDither"
 #define KEY_DOWNSCALE "DownScale"
 #define KEY_NATIVETEXTRECT "NativeTextRECT"
 #define KEY_NATIVETEXTLOD "NativeTextLOD"
@@ -157,9 +158,10 @@ EXPORT m64p_error CALL PluginStartup(m64p_dynlib_handle _CoreLibHandle, void *Co
     ConfigSetDefaultInt(configVideoParallel, KEY_OVERSCANCROP, 0, "Amount of overscan pixels to crop");
     ConfigSetDefaultBool(configVideoParallel, KEY_AA, 1, "VI anti-aliasing, smooths polygon edges.");
     ConfigSetDefaultBool(configVideoParallel, KEY_DIVOT, 1, "Allow VI divot filter, cleans up stray black pixels.");
+    ConfigSetDefaultBool(configVideoParallel, KEY_VISCREENDITHER, 1, "Allow VI to apply a dither effect across the screen (if the game has it).");
     ConfigSetDefaultBool(configVideoParallel, KEY_GAMMADITHER, 1, "Allow VI gamma dither");
     ConfigSetDefaultBool(configVideoParallel, KEY_VIBILERP, 1, "Allow VI bilinear scaling");
-    ConfigSetDefaultBool(configVideoParallel, KEY_VIDITHER, 1, "Allow VI dedither");
+    ConfigSetDefaultBool(configVideoParallel, KEY_VIDEDITHER, 1, "Allow VI dedither filter to smooth out dithering");
     ConfigSetDefaultInt(configVideoParallel, KEY_DOWNSCALE, 0, "Downsampling factor, Downscales output after VI, equivalent to SSAA. 0=disabled, 1=1/2, 2=1/4, 3=1/8");
     ConfigSetDefaultBool(configVideoParallel, KEY_NATIVETEXTLOD, 0, "Use native texture LOD computation when upscaling, effectively a LOD bias");
     ConfigSetDefaultBool(configVideoParallel, KEY_NATIVETEXTRECT, 1, "Native resolution TEX_RECT. TEX_RECT primitives should generally be rendered at native resolution to avoid seams");
@@ -252,7 +254,8 @@ EXPORT int CALL RomOpen(void)
     vk_gamma_dither = ConfigGetParamBool(configVideoParallel, KEY_GAMMADITHER);
     vk_vi_scale = ConfigGetParamBool(configVideoParallel, KEY_VIBILERP);
     vk_vi_aa = ConfigGetParamBool(configVideoParallel, KEY_AA);
-    vk_dither_filter = ConfigGetParamBool(configVideoParallel, KEY_VIDITHER);
+    vk_dither_filter = ConfigGetParamBool(configVideoParallel, KEY_VIDEDITHER);
+    vk_screen_dither = ConfigGetParamBool(configVideoParallel, KEY_VISCREENDITHER);
     vk_native_texture_lod = ConfigGetParamBool(configVideoParallel, KEY_NATIVETEXTLOD);
     vk_native_tex_rect = ConfigGetParamBool(configVideoParallel, KEY_NATIVETEXTRECT);
     vk_interlacing = ConfigGetParamBool(configVideoParallel, KEY_DEINTERLACE);

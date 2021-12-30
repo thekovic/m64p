@@ -72,7 +72,7 @@ const int DEPTH_BLEND_IMAGE_READ_ENABLE_BIT = 1 << 4;
 const int DEPTH_BLEND_COLOR_ON_COVERAGE_BIT = 1 << 5;
 const int DEPTH_BLEND_MULTI_CYCLE_BIT = 1 << 6;
 const int DEPTH_BLEND_AA_BIT = 1 << 7;
-const int DEPTH_BLEND_DITHER_ENABLE_BIT = 0 << 8;
+const int DEPTH_BLEND_DITHER_ENABLE_BIT = 1 << 8;
 
 struct TriangleSetupMem
 {
