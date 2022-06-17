@@ -24,7 +24,7 @@ mkdir -p $install_dir
 base_dir=$PWD
 
 cd $base_dir/mupen64plus-core/projects/unix
-make NETPLAY=1 OSD=0 NO_ASM=1 -j4 all
+make NETPLAY=0 OSD=0 NO_ASM=1 -j4 all
 cp -P $base_dir/mupen64plus-core/projects/unix/*$suffix* $install_dir
 cp $base_dir/mupen64plus-core/data/* $install_dir
 
@@ -105,22 +105,8 @@ cmake --build .
 cp mupen64plus-rsp-parallel.* $install_dir
 
 if [[ $UNAME == *"MINGW"* ]]; then
-  cd $base_dir/angrylion-rdp-plus/
-  python3 ./make_version.py
-  cd $base_dir/angrylion-rdp-plus/msvc
-  "${MSBUILD_PATH}MSBuild.exe" angrylion-plus.sln -p:Configuration=Release -p:Platform=x64
-  cp build/Release/mupen64plus-video-angrylion-plus.dll $install_dir
-else
-  mkdir -p $base_dir/angrylion-rdp-plus/build
-  cd $base_dir/angrylion-rdp-plus/build
-  cmake -DCMAKE_BUILD_TYPE=Release ..
-  cmake --build .
-  cp mupen64plus-video-angrylion-plus.* $install_dir
-fi
-
-if [[ $UNAME == *"MINGW"* ]]; then
   cd $install_dir
-  windeployqt.exe mupen64plus-gui.exe
+  windeployqt.exe --no-translations mupen64plus-gui.exe
 
   if [[ $UNAME == *"MINGW64"* ]]; then
     my_os=win64
@@ -143,15 +129,16 @@ if [[ $UNAME == *"MINGW"* ]]; then
   cp /$mingw_prefix/bin/libgraphite2.dll $install_dir
   cp /$mingw_prefix/bin/libfreetype-6.dll $install_dir
   cp /$mingw_prefix/bin/libbz2-1.dll $install_dir
+  cp /$mingw_prefix/bin/libmd4c.dll $install_dir
   cp /$mingw_prefix/bin/libminizip-1.dll $install_dir
   cp /$mingw_prefix/bin/libsamplerate-0.dll $install_dir
   cp /$mingw_prefix/bin/libjasper-4.dll $install_dir
   cp /$mingw_prefix/bin/libjpeg-8.dll $install_dir
   cp /$mingw_prefix/bin/libpcre2-16-0.dll $install_dir
   cp /$mingw_prefix/bin/libdouble-conversion.dll $install_dir
-  cp /$mingw_prefix/bin/libicuin68.dll $install_dir
-  cp /$mingw_prefix/bin/libicuuc68.dll $install_dir
-  cp /$mingw_prefix/bin/libicudt68.dll $install_dir
+  cp /$mingw_prefix/bin/libicuin69.dll $install_dir
+  cp /$mingw_prefix/bin/libicuuc69.dll $install_dir
+  cp /$mingw_prefix/bin/libicudt69.dll $install_dir
   cp /$mingw_prefix/bin/libzstd.dll $install_dir
   cp /$mingw_prefix/bin/libhidapi-0.dll $install_dir
   cp /$mingw_prefix/bin/libbrotlidec.dll $install_dir
