@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - full-axis
   pull_request:
 
 jobs:
