@@ -96,7 +96,7 @@ cp mupen64plus-video-parallel.* $install_dir
 
 if [[ $UNAME == *"MINGW"* ]]; then
   cd $install_dir
-  windeployqt.exe mupen64plus-gui.exe
+  windeployqt.exe --no-translations mupen64plus-gui.exe
 
   if [[ $UNAME == *"MINGW64"* ]]; then
     my_os=win64
@@ -113,7 +113,6 @@ if [[ $UNAME == *"MINGW"* ]]; then
   cp /$mingw_prefix/bin/libstdc++-6.dll $install_dir
   cp /$mingw_prefix/bin/zlib1.dll $install_dir
   cp /$mingw_prefix/bin/libintl-8.dll $install_dir
-  cp /$mingw_prefix/bin/libpcre-1.dll $install_dir
   cp /$mingw_prefix/bin/libiconv-2.dll $install_dir
   cp /$mingw_prefix/bin/libharfbuzz-0.dll $install_dir
   cp /$mingw_prefix/bin/libgraphite2.dll $install_dir
@@ -122,15 +121,15 @@ if [[ $UNAME == *"MINGW"* ]]; then
   cp /$mingw_prefix/bin/libminizip-1.dll $install_dir
   cp /$mingw_prefix/bin/libpcre2-16-0.dll $install_dir
   cp /$mingw_prefix/bin/libdouble-conversion.dll $install_dir
-  cp /$mingw_prefix/bin/libicuin69.dll $install_dir
-  cp /$mingw_prefix/bin/libicuuc69.dll $install_dir
-  cp /$mingw_prefix/bin/libicudt69.dll $install_dir
+  cp /$mingw_prefix/bin/libicuin72.dll $install_dir
+  cp /$mingw_prefix/bin/libicuuc72.dll $install_dir
+  cp /$mingw_prefix/bin/libicudt72.dll $install_dir
   cp /$mingw_prefix/bin/libzstd.dll $install_dir
   cp /$mingw_prefix/bin/libhidapi-0.dll $install_dir
   cp /$mingw_prefix/bin/libbrotlidec.dll $install_dir
   cp /$mingw_prefix/bin/libbrotlicommon.dll $install_dir
-  cp /$mingw_prefix/bin/libssl-1_1-x64.dll $install_dir
-  cp /$mingw_prefix/bin/libcrypto-1_1-x64.dll $install_dir
+  cp /$mingw_prefix/bin/libssl-3-x64.dll $install_dir
+  cp /$mingw_prefix/bin/libcrypto-3-x64.dll $install_dir
   cp /$mingw_prefix/bin/libmd4c.dll $install_dir
   cp $base_dir/7za.exe $install_dir
   cp $base_dir/mupen64plus-gui/discord/discord_game_sdk.dll $install_dir
